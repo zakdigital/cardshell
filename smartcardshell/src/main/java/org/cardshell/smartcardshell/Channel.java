@@ -29,6 +29,13 @@ public interface Channel {
   public String getName();
 
   /**
+   * Returns the (logical) number if this channel.
+   *
+   * @return channel number
+   */
+  public byte getNumber();
+
+  /**
    * Returns the {@link File} currently selected within this {@link Channel}.
    *
    * @return selected {@link File} or {@code null}, if no {@link File} is currently selected
@@ -41,8 +48,12 @@ public interface Channel {
    *
    * @param cardFile
    *          {@link File} to be selected
+   * @return warning message or {@code null}, if selection was successful
    */
-  public void selectCardFile(@NonNull File cardFile);
+  @Nullable
+  public String selectCardFile(@NonNull File cardFile);
+
+  public ResponseAPDU transmit(@NonNull byte[] commandAPDU);
 
   /**
    * Send an {@link CommandAPDU} request to this card and returns the {@link ResponseAPDU}.

@@ -1,5 +1,5 @@
 /******************************************************************************
- * CollectionValidate.java
+ * CollectionAssert.java
  *
  * Author: Sascha Zak
  * Date  : 29.08.2014
@@ -8,28 +8,31 @@
  * http://www.cardshell.org
  *
  *****************************************************************************/
-package org.cardshell.smartcardshell.commons;
+package org.cardshell.smartcardshell.commons.assertion;
 
 import java.util.Collection;
 
+import org.cardshell.smartcardshell.commons.NonNull;
+import org.cardshell.smartcardshell.commons.Nullable;
+
 /**
- * Validator resposible to validate {@link Collection}s
+ * Assertion resposible to assert properties on {@link Collection}s
  *
  * @author Sascha Zak
  * @since 0.1.0
  * @param <T>
- *          type of {@link Throwable} for invalid arguments
+ *          type of {@link Throwable} for invalid assertion arguments
  */
-public interface CollectionValidate<T extends Throwable> extends Validate<T> {
+public interface CollectionAssert<T extends Throwable> extends Assert<T> {
 
   /**
-   * Validates that a given {@link Collection} contains a required element.
+   * Asserts that a given {@link Collection} contains a required element.
    *
    * @param collection
-   *          collection to validate
+   *          collection to assert
    * @param element
    *          element that must be contained by the {@link Collection}
-   * @return the validated collection
+   * @return the asserted collection
    * @throws T
    *           if the required element is not contained by the given {@link Collection}
    */

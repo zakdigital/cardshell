@@ -16,7 +16,7 @@ package org.cardshell.smartcardshell;
  * @author Sascha Zak
  * @since 0.1.0
  */
-public final class CommandAPDU extends APDU {
+public class CommandAPDU extends APDU {
 
   /**
    * Creates a new mutable command APDU and initializes it with the given buffer. The internal buffer's length is set to

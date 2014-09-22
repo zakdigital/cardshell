@@ -1,5 +1,5 @@
 /******************************************************************************
- * StateValidate.java
+ * StateAssert.java
  *
  * Author: Sascha Zak
  * Date  : 29.08.2014
@@ -8,25 +8,27 @@
  * http://www.cardshell.org
  *
  *****************************************************************************/
-package org.cardshell.smartcardshell.commons;
+package org.cardshell.smartcardshell.commons.assertion;
 
 import java.util.function.Supplier;
 
+import org.cardshell.smartcardshell.commons.NonNull;
+
 /**
- * Validator responsible to validate states, meaning validation boolean expressions to {@code true} or {@code false} .
+ * Assertion responsible to assert states, meaning asserting boolean expressions to {@code true} or {@code false} .
  *
  * @author Sascha Zak
  * @since 0.1.0
  * @param <T>
- *          type of {@link Throwable} for invalid arguments
+ *          type of {@link Throwable} for invalid assertion arguments
  */
-public interface StateValidate<T extends Throwable> extends SupplierValidate<T> {
+public interface StateAssert<T extends Throwable> extends SupplierAssert<T> {
 
   /**
-   * Validates that the given expression is {@code false}.
+   * Asserts that the given expression is {@code false}.
    *
    * @param expression
-   *          expression to validate
+   *          expression to assert
    * @throws T
    *           if the given expression is illegally {@code true}
    */
@@ -36,10 +38,10 @@ public interface StateValidate<T extends Throwable> extends SupplierValidate<T> 
   }
 
   /**
-   * Validates that the given expression is {@code false}.
+   * Asserts that the given expression is {@code false}.
    *
    * @param expression
-   *          expression to validate
+   *          expression to assert
    * @param reason
    *          reason to be delegated to the thrown {@link Throwable} if the expression is illegally {@code true}.
    * @throws T
@@ -53,12 +55,12 @@ public interface StateValidate<T extends Throwable> extends SupplierValidate<T> 
   }
 
   /**
-   * Validates that the boolean supplied by the given {@link Supplier} is {@code false} .
+   * Asserts that the boolean supplied by the given {@link Supplier} is {@code false} .
    *
    * @param supplier
-   *          supplier to validate
+   *          supplier to assert
    * @throws T
-   *           if the boolean supplied is illegally {@code true} or throws itself and {@link Exception}
+   *           if the boolean supplied is illegally {@code true} or throws itself an {@link Exception}
    */
   @NonNull
   public default void isFalse(final Supplier<Boolean> supplier) throws T {
@@ -72,10 +74,10 @@ public interface StateValidate<T extends Throwable> extends SupplierValidate<T> 
   }
 
   /**
-   * Validates that the given expression is {@true}.
+   * Asserts that the given expression is {@true}.
    *
    * @param expression
-   *          expression to validate
+   *          expression to assert
    * @throws T
    *           if the given expression is {@false}
    */
@@ -85,10 +87,10 @@ public interface StateValidate<T extends Throwable> extends SupplierValidate<T> 
   }
 
   /**
-   * Validates that the given expession is {@code true}.
+   * Asserts that the given expession is {@code true}.
    *
    * @param expression
-   *          expression to validate
+   *          expression to assert
    * @param reason
    *          reason to be delegated to the thrown {@link Throwable} if the expression is {@code false}
    * @throws T
@@ -102,12 +104,12 @@ public interface StateValidate<T extends Throwable> extends SupplierValidate<T> 
   }
 
   /**
-   * Validates that the boolean supplied by the given {@link Supplier} is {@code true}.
+   * Asserts that the boolean supplied by the given {@link Supplier} is {@code true}.
    *
    * @param supplier
-   *          supplier to validate
+   *          supplier to assert
    * @throws T
-   *           if the boolean supplied is {@false} or throws itself and {@link Exception}
+   *           if the boolean supplied is {@false} or throws itself an {@link Exception}
    */
   @NonNull
   public default void isTrue(final Supplier<Boolean> supplier) throws T {

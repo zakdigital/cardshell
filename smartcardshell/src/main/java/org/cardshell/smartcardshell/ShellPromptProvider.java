@@ -58,6 +58,13 @@ final class ShellPromptProvider implements PromptProvider {
       prompt.append(" ");
       prompt.append(selectedCardChannel.getName());
       prompt.append(" >");
+
+      final File selectedFile = selectedCardChannel.getSelectedCardFile();
+      if (selectedFile != null) {
+        prompt.append(" ");
+        prompt.append(selectedFile.toString());
+        prompt.append(" >");
+      }
     }
     return prompt.toString();
   }

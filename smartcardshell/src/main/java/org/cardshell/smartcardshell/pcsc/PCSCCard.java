@@ -16,7 +16,7 @@ import org.cardshell.smartcardshell.BasicCard;
 import org.cardshell.smartcardshell.Card;
 import org.cardshell.smartcardshell.Channel;
 import org.cardshell.smartcardshell.commons.NonNull;
-import org.cardshell.smartcardshell.commons.Validate;
+import org.cardshell.smartcardshell.commons.assertion.Assert;
 
 /**
  * PC/SC implementation of a {@link Card} (using javax.smartcardio).
@@ -37,8 +37,8 @@ public final class PCSCCard extends BasicCard {
    *          {@link javax.smartcardio.Card} instance
    */
   public PCSCCard(@NonNull final javax.smartcardio.Card card) {
-    super("Card");
-    this.card = Validate.ARG.isNotNull(card);
+    super("Card-" + Assert.ARG.isNotNull(card).getProtocol());
+    this.card = card;
   }
 
   /**

@@ -11,7 +11,7 @@
 package org.cardshell.smartcardshell;
 
 import org.cardshell.smartcardshell.commons.NonNull;
-import org.cardshell.smartcardshell.commons.Validate;
+import org.cardshell.smartcardshell.commons.assertion.Assert;
 
 /**
  * Basic implementation of an entity with an immutable,human readable name. This name is also returned by
@@ -32,7 +32,7 @@ public abstract class NamedEntity {
    *          immutable, human readable name of this entity, must not be {@code blank}
    */
   public NamedEntity(@NonNull final String name) {
-    this.name = Validate.ARG.isNotBlank(name);
+    this.name = Assert.ARG.isNotBlank(name);
   }
 
   /**

@@ -52,7 +52,7 @@ public class SelectCommands implements CommandMarker {
       @CliOption(key = "terminal", help = "Selects a card terminal", optionContext = CARD_TERMINAL_CONTEXT) final Terminal cardTerminal,
       @CliOption(key = "card", help = "Selects a card from the selected card terminal", optionContext = CARD_CONTEXT) final Card card,
       @CliOption(key = "channel", help = "Selects a card channel from the selected card", optionContext = CARD_CHANNEL_CONTEXT) final Channel cardChannel,
-      @CliOption(key = "file", help = "Selects a file from the selected  card channel", optionContext = CARD_FILE_CONTEXT) final File cardFile) {
+      @CliOption(key = "file", help = "Selects a file from the selected card channel", optionContext = CARD_FILE_CONTEXT) final File cardFile) {
     if (cardTerminal != null) {
       shell.selectCardTerminal(cardTerminal);
       return null;
@@ -70,8 +70,7 @@ public class SelectCommands implements CommandMarker {
       if (selectedCardChannel == null) {
         throw new IllegalStateException("No card channel selected");
       }
-      selectedCardChannel.selectCardFile(cardFile);
-      return null;
+      return selectedCardChannel.selectCardFile(cardFile);
     }
     return "Selection target missing or unknown";
   }

@@ -1,5 +1,5 @@
 /******************************************************************************
- * SequenceValidate.java
+ * SequenceAssert.java
  *
  * Author: Sascha Zak
  * Date  : 29.08.2014
@@ -8,29 +8,32 @@
  * http://www.cardshell.org
  *
  *****************************************************************************/
-package org.cardshell.smartcardshell.commons;
+package org.cardshell.smartcardshell.commons.assertion;
 
 import java.util.function.Supplier;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.cardshell.smartcardshell.commons.NonNull;
+import org.cardshell.smartcardshell.commons.Nullable;
+
 /**
- * Validator responsible to validate {@link CharSequence}s and {@link String}s
+ * Assertion responsible to assert {@link CharSequence}s and {@link String}s
  *
  * @author Sascha Zak
  * @since 0.1.0
  * @param <T>
- *          type of {@link Throwable} for invalid arguments
+ *          type of {@link Throwable} for invalid assertion arguments
  */
-public interface SequenceValidate<T extends Throwable> extends SupplierValidate<T> {
+public interface SequenceAssert<T extends Throwable> extends SupplierAssert<T> {
 
   /**
-   * Validates that the given {@link String} isn't blank, meaning it is not {@code null} and not
-   * {@link String#isEmpty()} .
+   * Asserts that the given {@link String} isn't blank, meaning it is not {@code null} and not {@link String#isEmpty()}
+   * .
    *
    * @param string
-   *          {@link String} to validate
-   * @return the validated {@link String}
+   *          {@link String} to assert
+   * @return the asserted {@link String}
    * @throws T
    *           if the given {@link String} is blank
    */
@@ -44,12 +47,12 @@ public interface SequenceValidate<T extends Throwable> extends SupplierValidate<
   }
 
   /**
-   * Validates that the supplied {@link String} isn't blank, meaning it is not {@code null} and not
+   * Asserts that the supplied {@link String} isn't blank, meaning it is not {@code null} and not
    * {@link String#isEmpty()} .
    *
    * @param supplier
-   *          supplies the {@link String} to be validated
-   * @return the validated {@link String}
+   *          supplies the {@link String} to be asserted
+   * @return the asserted {@link String}
    * @throws T
    *           if the given {@link Supplier} is invalid or the supplied {@link String} is blank
    */
@@ -65,14 +68,14 @@ public interface SequenceValidate<T extends Throwable> extends SupplierValidate<
   }
 
   /**
-   * Validates that the given {@link CharSequence} matches the given pattern of a regular expression. Therefore the
-   * {@link CharSequence} is also validated to be not {@code null}
+   * Asserts that the given {@link CharSequence} matches the given pattern of a regular expression. Therefore the
+   * {@link CharSequence} is also asserted to be not {@code null}.
    *
    * @param sequence
-   *          {@link CharSequence} to validate
+   *          {@link CharSequence} to assert
    * @param pattern
-   *          the pattern to validate againt
-   * @return the validate {@link CharSequence}
+   *          the pattern to be asserted
+   * @return the asserted {@link CharSequence}
    * @throws T
    *           if the given {@link CharSequence} doesn't match the given pattern
    */
